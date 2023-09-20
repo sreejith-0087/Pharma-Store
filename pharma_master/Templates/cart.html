@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cart:Pharma master{% endblock %}
+{% block content %}
+
+  <div class="site-wrap">
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="product-thumbnail">Image</th>
+                    <th class="product-name">Product</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Quantity</th>
+                    <th class="product-total">Total</th>
+                    <th class="product-remove">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% for c in cart_items %}
+                    <td class="product-thumbnail">
+                      <img src="{{c.product.image.url}}" alt="Image" class="img-fluid">
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{c.product.medicine}}</h2>
+                    </td>
+                    <td>Rs.{{c.product.price}}</td>
+                    <td>
+                      <div class="input-group mb-3" style="max-width: 120px;">
+                        <div class="input-group-prepend">
+                          <a href="{% url 'cart:cart_remove' c.product.id %}"><button class="btn btn-outline-primary" type="button">&minus;</button></a>
+                        </div>
+                        <input type="text" class="form-control text-center" value="{{c.quantity}}" placeholder=""
+                          aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <div class="input-group-append">
+                          <a href="{% url 'cart:add_cart' c.product.id %}"><button class="btn btn-outline-primary" type="button">&plus;</button></a>
+                        </div>
+                      </div>
+
+                    </td>
+                    <td>Rs. {{c.sub_total}}</td>
+                    <td><a href="{% url 'cart:full_remove' c.product.id %}" class="btn btn-primary height-auto btn-sm">X</a></td>
+                  </tr>
+                {% endfor %}
+
+
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row mb-5">
+            <!---  <div class="col-md-6 mb-3 mb-md-0">
+                <button class="btn btn-primary btn-md btn-block">Update Cart</button>
+              </div> -->
+              <div class="col-md-6">
+                <a href="{% url 'shop:all_medicines' %}">
+                <button class="btn btn-outline-primary btn-md btn-block">Continue Shopping</button>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6 pl-5">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12 text-right border-bottom mb-5">
+                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                  </div>
+                </div>
+
+                <div class="row mb-5">
+                  <div class="col-md-6">
+                    <span class="text-black">Total</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black">Rs.{{total}}</strong>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='{% url 'cart:checkout' %}'">Proceed To
+                      Checkout</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   {% endblock %}

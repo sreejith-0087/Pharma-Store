@@ -1,0 +1,77 @@
+<div class="site-wrap">
+  <div class="site-navbar py-2">
+        <div class="search-wrap">
+          <div class="container">
+            <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+            <form action="{% url 'staff:staff_search_results' %}" method="get">
+              <input type="text" class="form-control" placeholder="Search keyword and hit enter..." name="q">
+            </form>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <div class="site-logo">
+                <a href="#" class="js-logo-clone">Pharma</a>
+              </div>
+            </div>
+            <div class="main-nav d-none d-lg-block">
+              <nav class="site-navigation text-right text-md-center" role="navigation">
+                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li class=""><a href="#">Home</a></li>
+                  <li class="has-children">
+                    <a href="#">Categories</a>
+                    <ul class="dropdown">
+                     {% for c in cat %}
+                        <li><a href="#">{{c.category}}</a></li>
+                    {% endfor %}
+                   <!---   <li><a href="#">View categories</a></li> --->
+                      <li><a href="{% url 'staff:add_category' %}">Add category</a></li>
+
+
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a href="#">Medicines</a>
+                    <ul class="dropdown">
+                      <li><a href="{% url 'staff:all_medicines' %}">All medicines</a></li>
+                      <li><a href="{% url 'staff:add_medicine' %}">Add medicine</a></li>
+
+
+                    </ul>
+                  </li>
+
+     <!--  Add new user and retailer only is_staff in User model is True -->
+           {% if request.user.is_staff %}
+                <li class="has-children">
+                    <li><a href="{% url 'security:staff_register' %}">Staff Register</a></li>
+
+                </li>
+           {% endif %}
+
+                  <!---<li><a href="#">View Feedback</a></li> -->
+
+                  {% if user.is_authenticated %}
+                      <li><a href="{% url 'security:staff_logout' %}">Logout</a></li>
+                  {% endif %}
+               <li><a href="{% url 'staff:view_orders' %}">Orders</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="icons">
+
+
+              <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+              <a href="{% url 'staff:view_profile' %}" class="icons-btn d-inline-block bag">
+                <i class="fa-solid fa-user"></i>
+              </a>
+
+
+              <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
+                  class="icon-menu"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

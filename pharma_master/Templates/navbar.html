@@ -1,0 +1,74 @@
+
+    <div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="{% url 'shop:med_search' %}" method="get">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter..." name="q">
+          </form>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="{% url 'shop:about' %}" class="js-logo-clone">Pharma</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="active"><a href="{% url 'security:index' %}">Home</a></li>
+                <li><a href="{% url 'shop:all_medicines' %}">Store</a></li>
+                <li class="has-children">
+                  <a href="#">Categories</a>
+                  <ul class="dropdown">
+                    {% for c in cat %}
+                    <li><a href="{% url 'shop:by_category' c.link %}">{{c.category}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                 {% if user.is_authenticated %}
+                       <li><a style="color:#57C4BF;" href="{% url 'security:staff_logout' %}">Logout</a></li>
+                       <li><a href="{% url 'shop:order_view' %}">View Order</a></li>
+                 {% else %}
+                 <li class="has-children">
+                  <a href="#">Register</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'security:retailer_reg' %}">Retailer Register</a></li>
+                  </ul>
+                 </li>
+
+
+                <li class="has-children">
+                  <a href="#">Login</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'security:retailer_login' %}">Retailer Login</a></li>
+                    <li><a href="{% url 'security:staff_login' %}">Staff Login</a></li>
+                  </ul>
+                </li>
+                {% endif %}
+
+                <li><a href="{% url 'shop:about' %}">About</a></li>
+                <li><a href="{% url 'shop:contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="{% url 'shop:retailer_profile' %}" class="icons-btn d-inline-block bag">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <a href="{% url 'cart:cart_detail' %}" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>
+
+            </a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
+                class="icon-menu"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>

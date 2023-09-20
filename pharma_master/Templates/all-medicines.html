@@ -1,0 +1,37 @@
+{% extends 'staff-base.html' %}
+{% load static %}
+
+{% block title %}Pharma-master:All Medicines{% endblock %}
+
+{% block content %}
+
+<div>
+    <h1 class="headings">All Medicines</h1>
+</div>
+<div class="container">
+
+
+
+    {% for m in medicines %}
+      <div class="col-md-12">
+          <div class="row mt-5 border border-danger">
+              <div class="col-3 p-0">
+                  <img src="{{m.image.url}}" alt="medicine image" height="200px" width="100%">
+              </div>
+              <div class="col-9">
+                  <a href="{% url 'staff:medicine_detail' m.id %}"><h3 style="color:black;">{{m.medicine}}</h3></a>
+                  <b>Price : </b>{{m.price}}
+                  <br>
+                  <b>Stock : </b>{{m.stock}}
+
+                  <br>
+                  <button onclick="PurchaseNumber({{m.id}})" class="btn btn-outline-success">Add to wishlist</button>
+              </div>
+          </div>
+
+      </div>
+    {% empty %}
+        <h2 style="color:#0C594C;text-align:center;margin-top:30px;">No results found.</h2>
+    {% endfor %}
+</div>
+{% endblock %}

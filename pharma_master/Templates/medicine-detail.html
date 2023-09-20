@@ -1,0 +1,54 @@
+{% extends 'staff-base.html' %}
+{% load static %}
+
+{% block title %}Pharma-master:Medicine Detail{% endblock %}
+
+{% block content %}
+<div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="{% url 'staff:all_medicines' %}">All Medicines</a> <span class="mx-2 mb-0">/</span> <a
+              href="{% url 'staff:medicine_detail' medicine.id %}">Detail</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{medicine.medicine}}</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 mr-auto">
+            <div class="border text-center">
+              <img src="{{medicine.image.url}}" alt="Image" class="img-fluid p-5">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-black">{{medicine.medicine}}</h2>
+              <b><u>Description</u></b>
+            <p>{{medicine.description}}</p>
+              <b>Content</b>
+              <p>{{medicine.content}}</p>
+              <b>Brand</b>
+              <p>{{medicine.content}}</p>
+              <b>Category</b>
+              <p>{{medicine.category}}</p>
+              <b>Price : </b>{{medicine.price}}
+              <br>
+              <b>Stock : </b>{{medicine.stock}}
+              <div class="row">
+                    <a href="{% url 'staff:update_medicine' medicine.id %}" class="btn btn-sm">Update medicine</a>
+                    <a href="{% url 'staff:delete_medicine' medicine.id %}" class="btn btn-sm" onclick="return Confirmation()">Delete medicine</a>
+              </div>
+
+               {% for f in feedbacks %}
+                 <h4>{{f.user.first_name}}&nbsp{{f.user.last_name}}</h4>
+              <p>{{f.created_at}}</p>
+                  <p>{{f.feedback}}</p>
+              {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

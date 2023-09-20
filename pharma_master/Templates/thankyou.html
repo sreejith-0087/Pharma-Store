@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Thank You:Pharma master{% endblock %}
+{% block content %}
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <span class="icon-check_circle display-3 text-success"></span>
+            <h2 class="display-3 text-black">Thank you!</h2>
+            <p class="lead mb-5">You order was successfuly completed.</p>
+            <p><a href="{% url 'shop:all_medicines' %}" class="btn btn-md height-auto px-4 py-6 btn-primary">Back to store</a>
+              &nbsp;&nbsp;&nbsp;
+            <a href="{% url 'shop:order_view' %}" class="btn btn-md height-auto px-4 py-6 btn-primary">View Order</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+{% endblock %}
+

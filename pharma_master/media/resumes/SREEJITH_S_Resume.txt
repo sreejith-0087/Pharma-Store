@@ -1,0 +1,89 @@
+SREEJITH S
+Python Developer
+
+Palakkad, India 678684
++919656430087
+sreejith.s.8700@gmail.com
+LinkedIn: https://www.linkedin.com/in/sreejith-s-54031917b
+
+Professional Summary
+
+Analytical, motivated and hard-working Python Developer with over one years of experience designing, debugging and teaching applications using Django,Flask and Python coding languages. Committed to continuously learning and improving my technical skills and abilities.
+To grow with the company where I can effectively contribute my software skills as professional.
+
+Work History
+
+May 2022 - Current
+MySoftNet - Ernakulam
+Python developer cum Faculty
+
+Worked on Django framework for various academic projects.
+Train students in python full stack
+Coach students one-on-one to cultivate their potential
+Create personalized lesson plans for students based on their unique needs
+Worked well in a team setting, providing support and guidance.
+Proved successful working within tight deadlines and a fast-paced environment.
+Gained strong leadership skills by managing projects from start to finish.
+Organized and detail-oriented with a strong work ethic.
+
+November 2021 - April 2022
+Soften Technologies - Ernakulam
+Jr.Software Programmer
+
+During my course of work, I was responsible for creating modules with front end technologies, and also doing projects using python web framework(Django)
+
+Education
+
+July 2018 - May 2021
+Nehru Arts and Science College Coimbatore
+BCA
+
+June 2016 - May 2018
+Lourdh Matha Higher Secondary School Mangalam Dam
+HSE
+
+May 2015 - May 2016
+Lourdh Matha Higher Secondary school Mangalam
+SSLC
+
+Interests
+
+Podcast
+
+Debates
+
+Movies,Webseries
+
+History
+
+Skills
+
+C
+
+C++
+
+Python
+
+HTML,CSS,Bootstrap
+
+Javascript,jQuery
+
+MySQL,SQLite,Postgresql
+
+Django
+
+Flask
+
+RestAPI
+
+Pandas
+
+AI,ML
+
+Languages
+
+Malayalam
+
+English
+
+Tamil

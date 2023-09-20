@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in orders %}
+<ul>
+    <h3>{{i.user.first_name}} {{i.user.last_name}}</h3>
+    <li>{{i.amount}}</li>
+    <p>{{i.user.address}}</p>
+    <a href="{% url 'staff:order_detail' i.id %}">Order detail</a>
+</ul>
+
+{% endfor %}
+</body>
+</html>

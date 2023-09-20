@@ -1,0 +1,42 @@
+{% extends 'staff-base.html' %}
+{% load static %}
+
+{% block title %}Pharma-master:Update Medicine{% endblock %}
+
+{% block content %}
+
+<div>
+    <h1 class="headings">Update Medicine</h1>
+</div>
+<div class="row m-0">
+    <div class="col-3"></div>
+    <div class="col-4">
+        <form method="post" enctype="multipart/form-data" name="update_form">
+            {% csrf_token %}
+            {{form.as_p}}
+           <label>New Stock</label>
+            <input type="number" name="new_stock" id="nstock" class="form-control" oninput="UpdateStock()" min="0" value="0">
+            <div class="mt-5">
+                <input type="submit" value="Update medicine" class="btn btn-success">
+            </div>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+<script>
+    document.update_form.stock.setAttribute('readonly',true);
+    var current_value=parseInt(document.update_form.stock.value)
+
+    function UpdateStock(){
+          let count=parseInt(document.update_form.new_stock.value);
+
+          let a=current_value+count;
+
+          document.update_form.stock.value=a;
+
+    }
+
+
+</script>
+{% endblock %}

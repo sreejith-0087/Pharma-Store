@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Shop:Pharma master{% endblock %}
+{% block content %}
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="{% url 'security:index' %}">Home</a> <span class="mx-2 mb-0">/</span> <a
+              href="{% url 'shop:all_medicines' %}">Store</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{med.medicine}}</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 mr-auto">
+            <div class="border text-center">
+              <img src="{{med.image.url}}" alt="Image" class="img-fluid p-5">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-black">{{med.medicine}}</h2>
+            <p>{{med.description}}.</p>
+            
+
+            <p> <strong class="text-primary h4">Rs. {{med.price}}</strong></p>
+
+            
+            
+            <div class="mb-5">
+              <div class="input-group mb-3" style="max-width: 220px;">
+
+              </div>
+    
+            </div>
+            <p><a href="{% url 'cart:add_cart' med.id %}" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p>
+
+            <div class="mt-5">
+              <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                    aria-controls="pills-home" aria-selected="true">Ordering Information</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                    aria-controls="pills-profile" aria-selected="false">Specifications</a>
+                </li>
+            
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+
+                </div>
+
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            
+
+            
+                </div>
+            
+              </div>
+            {% for msg in messages %}
+              <p style="color:red;">{{msg}}</p>
+            {% endfor %}
+              <form method="post" action="{% url 'shop:feedback' med.id %}">
+                {% csrf_token %}
+                <label>Feedback</label>
+                <textarea class="form-control" name="feedback"></textarea>
+                <div style="text-align:center;">
+                  <input type="submit" value="Add Feedback" class="btn btn-success">
+                </div>
+              </form>
+
+              {% for f in feedbacks %}
+                 <h4>{{f.user.first_name}}&nbsp{{f.user.last_name}}</h4>
+                  <p>{{f.feedback}}</p>
+              {% endfor %}
+            </div>
+
+    
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

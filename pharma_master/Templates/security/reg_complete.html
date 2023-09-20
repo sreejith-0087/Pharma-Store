@@ -1,0 +1,22 @@
+{% extends 'staff-base.html' %}
+{% load static %}
+
+{% block title %}Pharma-master:login id{% endblock %}
+
+{% block content %}
+<div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="{% url 'staff:all_medicines' %}">All Medicines</a>
+              <strong class="text-black"></strong></div>
+        </div>
+      </div>
+    </div>
+{% for i in user %}
+
+<h2>Your Employee id is {{i.id}} request will be accepted by admin soon. Thank you<a href="{% url 'security:staff_login' %}">Login here</a></h2>
+
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Thank You:Pharma master{% endblock %}
+{% block content %}
+
+
+<br><br><br><br><br>
+<center><h4>Your Order Confirmation</h4></center>
+<br>
+
+<h3 style="color:#496A3D">Ordered Items</h3><br>
+    {% for order in order_items %}
+    <div style="color:#10A772;border:1px solid black;">
+        <div style="float:left;">
+        <img src="{{order.product.image.url}}" width="80px" height="120px">
+        </div>
+        <ul>
+            <li>{{order.product.medicine}} - Rs {{order.product.price}}</li>
+        </ul>
+        <p>date_time:  {{ order.order.date_time }}</p>
+        {% if order.order.delivery_status %}
+        <p>Delivery_status: Deliverd</p>
+        {% else %}
+        <p>Delivery_status: Not Deliverd</p>
+        {% endif %}
+
+    </div>
+<hr>
+    {% endfor %}
+
+{% endblock %}
